@@ -8,9 +8,11 @@ $(document).ready(function(){
         $.post("post.php",
         {
           nama: $("#nama").val(),
-          npm: $("#npm").val()
+          npm: $("#npm").val(),
+          cinta: $("#cinta").val()
         },
         function(data,status){
+            cinta: $("#cinta").val('ganti');
             alert(data);
         });
     });
@@ -25,6 +27,9 @@ $(document).ready(function(){
     <br>
     NPM
     <input type="text" name="npm" id="npm">
+    <br>
+    Cinta
+    <input type="text" name="cinta" id="cinta">
 </form>
 <button id="tombol">Send an HTTP POST request to a page and get the result back</button>
 
