@@ -5,14 +5,22 @@
 <script>
 $(document).ready(function(){
     $("#tombol").click(function(){
+        //ganti id
+        $.post("ganti_id.php",
+        {
+          id: $("#id").val(),
+        },
+        function(data,status){
+          $("#id").val(data);
+        });
+
+        //alert
         $.post("post.php",
         {
           nama: $("#nama").val(),
-          npm: $("#npm").val(),
-          cinta: $("#cinta").val()
+          id: $("#id").val(),
         },
         function(data,status){
-            cinta: $("#cinta").val('ganti');
             alert(data);
         });
     });
@@ -22,14 +30,9 @@ $(document).ready(function(){
 <body>
 
 <form>
+    <input type="hidden" name="id" id="id" value="1">
     Nama
     <input type="text" name="nama" id="nama">
-    <br>
-    NPM
-    <input type="text" name="npm" id="npm">
-    <br>
-    Cinta
-    <input type="text" name="cinta" id="cinta">
 </form>
 <button id="tombol">Send an HTTP POST request to a page and get the result back</button>
 
